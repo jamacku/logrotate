@@ -1276,6 +1276,7 @@ static int copyTruncate(const char *currLog, const char *saveLog, const struct s
 
             if (setSecCtx(fdcurr, currLog, &prevCtx) != 0) {
                 /* error msg already printed */
+                freecon(prevCtx);
                 goto fail;
             }
 #ifdef WITH_ACL
