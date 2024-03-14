@@ -840,6 +840,7 @@ static int compressLogFile(const char *name, const struct logInfo *log, const st
 
     if (setSecCtx(inFile, name, &prevCtx) != 0) {
         /* error msg already printed */
+        freecon(prevCtx);
         close(inFile);
         return 1;
     }
