@@ -2688,6 +2688,7 @@ static int writeState(const char *stateFilename)
 
     if (setSecCtx(fdcurr, stateFilename, &prevCtx) != 0) {
         /* error msg already printed */
+        freecon(prevCtx);
         free(tmpFilename);
         close(fdcurr);
         return 1;
