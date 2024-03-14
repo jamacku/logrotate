@@ -2146,6 +2146,7 @@ static int rotateSingleLog(const struct logInfo *log, unsigned logNum,
         if (!(log->flags & (LOG_FLAG_COPYTRUNCATE | LOG_FLAG_COPY))) {
             if (setSecCtxByName(log->files[logNum], log, &savedContext) != 0) {
                 /* error msg already printed */
+                freecon(savedContext);
                 return 1;
             }
 #ifdef WITH_ACL
