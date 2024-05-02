@@ -26,7 +26,8 @@ AC_SYS_LARGEFILE
 dnl needed for basename() on OS X
 AC_CHECK_HEADERS([libgen.h])
 
-AC_CHECK_LIB([popt],[poptParseArgvString],,
+# Use pkg-config to find libpopt - MAC OS 14+ stores popt in different location than before
+PKG_CHECK_MODULES([popt], [poptParseArgvString],,
   AC_MSG_ERROR([libpopt required but not found]))
 
 dnl Needed for out-of-source builds
