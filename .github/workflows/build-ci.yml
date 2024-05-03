@@ -20,6 +20,9 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install -y acl automake libacl1-dev libpopt-dev libselinux1-dev pkg-config rpm
 
+    - run: |
+        pkgconf --libs libpopt
+
     - name: Bootstrap
       run: ./autogen.sh
 
@@ -53,6 +56,9 @@ jobs:
 
     - name: Install dependencies
       run: brew install automake coreutils popt pkg-config
+
+    - run: |
+        pkgconf --libs libpopt
 
     - name: Bootstrap
       run: ./autogen.sh
